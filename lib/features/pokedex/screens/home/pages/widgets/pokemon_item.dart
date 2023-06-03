@@ -73,7 +73,7 @@ class PokemonItem extends StatelessWidget {
         ),
         Positioned(
           bottom: 12,
-          right: 1,
+          right: 2,
           child: Image.network(
             poke.image,
           ),
