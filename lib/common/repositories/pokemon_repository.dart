@@ -18,7 +18,7 @@ class PokemonRepository implements IPokemonRepository{
     try {
       final response = await dio.get(ApiConsts.allPokemonsURL);
       final json = jsonDecode(response.data) as Map<String, dynamic>;
-      final list = json['poke'] as List<dynamic>;
+      final list = json['pokemon'] as List<dynamic>;
       return list.map((e) => Poke.fromMap(e)).toList();
     } catch (e) {
       throw Failure(message: 'Não foi possível carregar os dados');
