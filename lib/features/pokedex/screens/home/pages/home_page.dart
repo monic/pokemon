@@ -18,7 +18,10 @@ class HomePage extends StatelessWidget {
           crossAxisCount: 2,
           crossAxisSpacing: 12,
           mainAxisSpacing: 12,
-          children: list.map((e) => PokemonItem(poke: e)).toList(),
+          children: list.map((e) => PokemonItem(poke: e,
+          onTap: onItemTap,),
+          )
+          .toList(),
         ),
       ),
     );

@@ -8,9 +8,8 @@ import 'package:pokemon/features/pokedex/screens/details/pages/datail_page.dart'
 import '../../../../../common/repositories/pokemon_repository.dart';
 
 class DetailArguments{
-  DetailArguments({required this.name});
-
-  final String name;  
+  DetailArguments({required this.poke});
+  final Poke poke;  
 }
 
 class DetailContainer extends StatelessWidget {
@@ -28,7 +27,7 @@ class DetailContainer extends StatelessWidget {
       }
 
       if(snapshot.connectionState == ConnectionState.done && snapshot.hasData){
-        return DetailPage(name: arguments.name, list: snapshot.data!);
+        return DetailPage(poke: arguments.poke, list: snapshot.data!);
       }
       if(snapshot.hasError){
         return PoError(
