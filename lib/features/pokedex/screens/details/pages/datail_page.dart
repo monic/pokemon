@@ -1,37 +1,91 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon/common/models/poke.dart';
 
-class DetailPage extends StatelessWidget {
-  const DetailPage({super.key, required this.poke, required this.list});
+import 'widgets/detail_app_bar_widget.dart';
+import 'widgets/detail_list_widget.dart';
+
+class DetailPage extends StatefulWidget {
+  DetailPage({
+    Key? key,
+    required this.poke,
+    required this.list,
+    required this.onBack,
+    required this.controller,
+    required this.onChangePokemon,
+  }) : super(key: key);
   final Poke poke;
   final List<Poke> list;
+  final VoidCallback onBack;
+  final PageController controller;
+  final ValueChanged<Poke> onChangePokemon;
 
+  @override
+  _DetailPageState createState() => _DetailPageState();
+}
+
+
+class _DetailPageState extends State<DetailPage> {
+  late ScrollController scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController = ScrollController();
+  }
+
+  bool isOnTop = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(poke.name),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 400,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 32),
-                child: ListView(
-                  children: list.map((e) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(e.name),
-                  )).toList(),       
-                  scrollDirection: Axis.horizontal,     
-                  ),
+      body: NotificationListener(
+        onNotification: (notification) {
+          setState(() {
+            if (scrollController.position.pixels > 37) {
+              isOnTop = false;
+            } else if (scrollController.position.pixels <= 36) {
+              isOnTop = true;
+            }
+          });
+          return false;
+        },
+        child: CustomScrollView(
+          controller: scrollController,
+          physics: ClampingScrollPhysics(),
+          slivers: [
+            DetailAppBarWidget(
+              poke: widget.poke,
+              onBack: widget.onBack,
+              isOnTop: isOnTop,
+            ),
+            DetailListWidget(
+              poke: widget.poke,
+              list: widget.list,
+              controller: widget.controller,
+              onChangePokemon: widget.onChangePokemon,
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height,
+                child: Stack(
+                  children: [
+                    Container(
+                      color: widget.poke.baseColor,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(24),
+                            topRight: Radius.circular(24),
+                          )),
+                    ),
+                  ],
+                ),
               ),
-              ),
+            )
           ],
         ),
-      )
+      ),
     );
   }
 }
