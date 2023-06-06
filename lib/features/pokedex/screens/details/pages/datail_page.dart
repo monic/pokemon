@@ -50,7 +50,7 @@ class _DetailPageState extends State<DetailPage> {
         },
         child: CustomScrollView(
           controller: scrollController,
-          physics: ClampingScrollPhysics(),
+          physics: const ClampingScrollPhysics(),
           slivers: [
             DetailAppBarWidget(
               poke: widget.poke,
@@ -68,21 +68,101 @@ class _DetailPageState extends State<DetailPage> {
                 height: MediaQuery.of(context).size.height,
                 child: Stack(
                   children: [
-                    Container(
-                      color: widget.poke.baseColor,
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(24),
-                            topRight: Radius.circular(24),
-                          )),
-                    ),
+                    
                   ],
                 ),
               ),
             )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class StatusBar extends StatelessWidget {
+  final double widthFactor;
+
+  const StatusBar({Key? key, required this.widthFactor}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 19,
+      child: Center(
+        child: Container(
+          height: 4,
+          width: MediaQuery.of(context).size.width * .47,
+          alignment: Alignment.centerLeft,
+          decoration: const ShapeDecoration(
+            shape: StadiumBorder(),
+            color: Colors.grey,
+          ),
+          child: FractionallySizedBox(
+            widthFactor: widthFactor,
+            heightFactor: 1.0,
+            child: Container(
+              decoration: ShapeDecoration(
+                shape: const StadiumBorder(),
+                color: widthFactor > 0.5 ? Colors.teal : Colors.red,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class TabBarApp extends StatelessWidget {
+  const TabBarApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData(useMaterial3: true),
+      home: const TabBarExample(),
+    );
+  }
+}
+
+class TabBarExample extends StatelessWidget {
+  const TabBarExample({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return DefaultTabController(
+      initialIndex: 1,
+      length: 3,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('TabBar Sample'),
+          bottom: const TabBar(
+            tabs: <Widget>[
+              Tab(
+                icon: Icon(Icons.cloud_outlined),
+              ),
+              Tab(
+                icon: Icon(Icons.beach_access_sharp),
+              ),
+              Tab(
+                icon: Icon(Icons.brightness_5_sharp),
+              ),
+            ],
+          ),
+        ),
+        body: const TabBarView(
+          children: <Widget>[
+            Center(
+              child: Text("It's cloudy here"),
+            ),
+            Center(
+              child: Text("It's rainy here"),
+            ),
+            Center(
+              child: Text("It's sunny here"),
+            ),
           ],
         ),
       ),
