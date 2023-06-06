@@ -25,7 +25,8 @@ class DetailPage extends StatelessWidget {
               list: list, 
               controller: controller, 
               onChangePoke: onChangePoke,
-            ),        
+            ),
+               // Esse campo é para edição     
         ],
       ),
     );
