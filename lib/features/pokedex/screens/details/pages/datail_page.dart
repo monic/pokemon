@@ -68,7 +68,173 @@ class _DetailPageState extends State<DetailPage> {
                 height: MediaQuery.of(context).size.height,
                 child: Stack(
                   children: [
-                    
+                    Container(
+                      color: widget.poke.baseColor,
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(24),
+                          topRight: Radius.circular(24),
+                        ),
+                      ),
+                      /**
+                       * appBar Aqui
+                       */
+                      //child: TabBarApp(),
+
+                      //containerEmBranco
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 85),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                  'Speed',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey[600]
+                                  )
+                                ),
+                                const SizedBox(height: 10,),
+                                Text(
+                                  'Special Def',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey[600]
+                                  ),
+                                ),
+                                const SizedBox(height: 10,),
+                                Text(
+                                  'Special Att',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey[600]
+                                  ),
+                                ),
+                                const SizedBox(height: 10,),
+                                Text(
+                                  'Defense',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey[600]
+                                  ),
+                                ),
+                                const SizedBox(height: 10,),
+                                Text(
+                                  'Attack',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey[600]
+                                  ),
+                                ),
+                                const SizedBox(height: 10,),
+                                Text(
+                                  'HP',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey[600]
+                                  ),
+                                ),
+                                const SizedBox(height: 10,),
+                                Text(
+                                  'Total',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.grey[600]
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(width: 10,),
+                            Column(
+                              children: const <Widget>[
+                                Text(
+                                  '80',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  )
+                                ),
+                                SizedBox(height: 10,),
+                                Text(
+                                  '47',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  )
+                                ),
+                                SizedBox(height: 10,),
+                                Text(
+                                  '68',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  )
+                                ),
+                                SizedBox(height: 10,),
+                                Text(
+                                  '41',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  )
+                                ),
+                                SizedBox(height: 10,),
+                                Text(
+                                  '72',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  )
+                                ),
+                                SizedBox(height: 10,),
+                                Text(
+                                  '49',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  )
+                                ),
+                                SizedBox(height: 10,),
+                                Text(
+                                  '357',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  )
+                                ),
+                              ]
+                            ),
+                            const SizedBox(width: 10,),
+                            Column(
+                              children: const <Widget>[
+                                StatusBar(widthFactor: 0.80),
+                                SizedBox(height: 10,),
+                                StatusBar(widthFactor: 0.47),
+                                SizedBox(height: 10,),
+                                StatusBar(widthFactor: 0.68),
+                                SizedBox(height: 10,),
+                                StatusBar(widthFactor: 0.41),
+                                SizedBox(height: 10,),
+                                StatusBar(widthFactor: 0.72),
+                                SizedBox(height: 10,),
+                                StatusBar(widthFactor: 0.49),
+                                SizedBox(height: 10,),
+                                StatusBar(widthFactor: 0.357),
+                                SizedBox(height: 10,),
+                              ]
+                            ),
+                          ],
+                        ),
+                      ),
+                      //containerEmBranco
+                      
+                    ),
                   ],
                 ),
               ),
